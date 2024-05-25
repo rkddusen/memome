@@ -4,7 +4,7 @@ import MemoArea from './components/MemoArea';
 
 const App:React.FC = () => {
   return (
-    <div>
+    <div className='w-full h-full'>
       <MemoArea />
     </div>
   );

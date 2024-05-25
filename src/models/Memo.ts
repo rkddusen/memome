@@ -2,6 +2,8 @@
 export interface MemoInfo {
   memo: MemoList;
   count: number;
+  lastId: number;
+  folder: number;
 }
 
 export interface MemoList {
