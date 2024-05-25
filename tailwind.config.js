@@ -24,6 +24,9 @@ module.exports = {
       height: px0_1000,
       padding: px0_100,
       margin: px0_100,
+      borderWidth: {
+        '1.5': '1.5px',
+      },
       borderRadius: {
         '10': '10px',
       },
