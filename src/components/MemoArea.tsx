@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Memo, MemoInfo } from '../models/Memo';
 import MemoItem from './MemoItem';
 import MemoNav from './MemoNav';
@@ -52,9 +52,18 @@ const tempMemo: MemoInfo = {
   },
 };
 
-const MemoArea: React.FC = () => {
+interface MemoAreaComponentProps {
+  nowFolder: number,
+}
+
+const MemoArea: React.FC<MemoAreaComponentProps> = ({ nowFolder }) => {
   const [memoInfo, setMemoInfo] = useState<MemoInfo>(tempMemo);
   const [isCreated, setIsCreated] = useState<boolean>(false);
+
+  useEffect(() => {
+    // folder 바뀔 때 해당 folder에 저장된 메모만 저장
+    setMemoInfo(prev => ({...prev, folder: nowFolder}));
+  }, [nowFolder]);
 
   const handleNewMemoOpen = (): void => {
     // 메모를 추가하기 위한 MemoDetail 출력
