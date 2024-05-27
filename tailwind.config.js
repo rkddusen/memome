@@ -18,7 +18,8 @@ module.exports = {
         'gray': '#7F7F7F',
         'light-gray': '#C0C0C0',
         'lighter-gray': '#DCDCDC',
-        'star': '#FFC700'
+        'star': '#FFC700',
+        'light-blue': '#F0F4FB',
       },
       width: px0_1000,
       height: px0_1000,
@@ -36,6 +37,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 }
 
