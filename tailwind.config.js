@@ -30,6 +30,7 @@ module.exports = {
       },
       borderRadius: {
         '10': '10px',
+        '5': '5px',
       },
       gap: px0_50,
       gridTemplateColumns: {
