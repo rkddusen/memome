@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Memo } from '../models/Memo'
+import MemoManageBtn from './MemoManageBtn';
 
 interface MemoDetailComponentProps {
     handleBack(): void,
@@ -37,19 +38,20 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
 
   return (
     <div className='flex flex-col w-full h-full'>
-      <div className='flex flex-row w-full mb-5 h-36'>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          className='p-5 mb-20 border-1.5 border-black stroke-2 w-36 h-36 fill-none stroke-black rounded-10 hover:cursor-pointer'
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          onClick={handleBack}>
-            <path d="M19 12H6M12 5l-7 7 7 7"/>
-        </svg>
-        <div onClick={saveMemo} className='flex flex-row items-center ml-5 px-10 border-1.5 border-black h-36 rounded-10 hover:cursor-pointer'>
+      <div className='flex flex-row w-full mb-5 h-30'>
+        <MemoManageBtn handleBtnClick={handleBack}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className='w-16 h-16 stroke-2 fill-none stroke-black'
+            strokeLinecap="round"
+            strokeLinejoin="round">
+              <path d="M19 12H6M12 5l-7 7 7 7"/>
+          </svg>
+        </MemoManageBtn>
+        <MemoManageBtn newStyle={'ml-5'} handleBtnClick={saveMemo}>
           <p>저장</p>
-        </div>
+        </MemoManageBtn>
       </div>
       <input
         type='text'
