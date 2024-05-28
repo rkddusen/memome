@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Memo } from '../models/Memo'
 import MemoManageBtn from './MemoManageBtn';
+import SVG from './SVG';
 
 interface MemoDetailComponentProps {
   handleBack(): void,
@@ -46,27 +47,17 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
     <div className='flex flex-col w-full h-full'>
       <div className='flex flex-row w-full mb-20 h-30'>
         <MemoManageBtn handleBtnClick={handleBack}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            className='w-16 h-16 stroke-2 fill-none stroke-black'
-            strokeLinecap="round"
-            strokeLinejoin="round">
-              <path d="M19 12H6M12 5l-7 7 7 7"/>
-          </svg>
+          <SVG svgStyle='w-16 h-16 stroke-2 fill-none stroke-black'>
+            <path d="M19 12H6M12 5l-7 7 7 7"/>
+          </SVG>
         </MemoManageBtn>
         <MemoManageBtn newStyle={'ml-5'} handleBtnClick={saveMemo}>
           <p>저장</p>
         </MemoManageBtn>
         <MemoManageBtn newStyle={'ml-5'} handleBtnClick={favoriteMemo}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={`w-16 h-16 stroke-2 stroke-black ${star ? 'fill-star' : 'fill-none'}`}
-            viewBox="0 0 24 24"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
+          <SVG svgStyle={`w-16 h-16 stroke-2 stroke-black ${star ? 'fill-star' : 'fill-none'}`}>
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </SVG>
         </MemoManageBtn>
       </div>
       <div className='flex flex-col w-full mb-20'>
@@ -76,14 +67,9 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
           </SemiTitle>
           <div className='flex items-center justify-between h-full p-5 border w-180 rounded-5 border-gray hover:cursor-pointer'>
             <p className='text-gray text-14'>기본 폴더</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className='stroke-2 w-14 h-14 fill-none stroke-gray'
-              viewBox="0 0 24 24"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-                <path d="M6 9l6 6 6-6"/>
-            </svg>
+            <SVG svgStyle='stroke-2 w-14 h-14 fill-none stroke-gray'>
+              <path d="M6 9l6 6 6-6"/>
+            </SVG>
           </div>
         </div>
         <div className='flex flex-row items-center h-30'>
@@ -116,13 +102,9 @@ interface SemiTitleComponentProps {
 const SemiTitle:React.FC<SemiTitleComponentProps> = ({ title, children }) => {
   return (
     <div className="flex flex-row items-center w-150">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="stroke-2 w-14 h-14 fill-none stroke-gray"
-        viewBox="0 0 24 24"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >{ children }</svg>
+      <SVG svgStyle="stroke-2 w-14 h-14 fill-none stroke-gray">
+        {children}
+      </SVG>
       <p className='ml-5 text-gray text-14'>{title}</p>
     </div>
   );
