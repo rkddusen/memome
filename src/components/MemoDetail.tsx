@@ -38,7 +38,7 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
 
   return (
     <div className='flex flex-col w-full h-full'>
-      <div className='flex flex-row w-full mb-5 h-36'>
+      <div className='flex flex-row w-full mb-5 h-30'>
         <MemoManageBtn handleBtnClick={handleBack}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
