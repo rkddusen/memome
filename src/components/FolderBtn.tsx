@@ -1,4 +1,5 @@
 import React from 'react'
+import SVG from './SVG'
 
 // btnNum은 버튼 인덱스.
 // btnNum이 -1이면 folder를 추가해야한다는 의미
@@ -25,14 +26,9 @@ const FolderBtn:React.FC<FolderBtnComponentProps | AddFolderBtnComponentProps> =
       onClick={handleChangeFolder ? () => handleChangeFolder(btnNum) : handleAddFolder}>
       <div className={`flex flex-row items-center justify-center h-full`}>
         {btnNum === -1 ?
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className='w-16 h-16 mr-5 stroke-2 fill-none stroke-gray'
-            viewBox="0 0 24 24"
-            strokeLinecap="round"
-            strokeLinejoin="round">
+          <SVG svgStyle='w-16 h-16 mr-5 stroke-2 fill-none stroke-gray'>
             <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
+          </SVG>
           : null}
         {folder}
       </div>
