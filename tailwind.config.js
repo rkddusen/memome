@@ -14,7 +14,7 @@ module.exports = {
       fontSize: px0_100,
       colors: {
         'black': '#060606',
-        'white': '#FAFAFA',
+        'white': '#FCFCFC',
         'gray': '#7F7F7F',
         'light-gray': '#C0C0C0',
         'lighter-gray': '#DCDCDC',
@@ -32,6 +32,7 @@ module.exports = {
         '10': '10px',
         '5': '5px',
       },
+      top: px0_50,
       gap: px0_50,
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(200px, 200px))',

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Memo } from '../models/Memo'
 import MemoManageBtn from './MemoManageBtn';
 import SVG from './SVG';
+import SelectMemoFolder from './SelectMemoFolder';
 
 interface MemoDetailComponentProps {
   handleBack(): void,
@@ -65,12 +66,7 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
           <SemiTitle title='저장 폴더'>
             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
           </SemiTitle>
-          <div className='flex items-center justify-between h-full p-5 border w-180 rounded-5 border-gray hover:cursor-pointer'>
-            <p className='text-gray text-14'>기본 폴더</p>
-            <SVG svgStyle='stroke-2 w-14 h-14 fill-none stroke-gray'>
-              <path d="M6 9l6 6 6-6"/>
-            </SVG>
-          </div>
+          <SelectMemoFolder folder={folder} setFolder={setFolder} />
         </div>
         <div className='flex flex-row items-center h-30'>
           <SemiTitle title='태그'>
