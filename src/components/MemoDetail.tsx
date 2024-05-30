@@ -81,12 +81,12 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
         value={titleInput}
         placeholder={'제목을 입력하세요.'}
         onChange={(e) => handleChangeMemo(TITLE, e)}
-        className='w-full font-bold text-25 outline-0' />
+        className='w-full font-bold bg-white text-25 outline-0' />
       <textarea
         value={contentInput}
         placeholder={'내용을 입력하세요.'}
         onChange={(e) => handleChangeMemo(CONTENT, e)}
-        className='w-full h-full mt-20 resize-none text-16 outline-0' />
+        className='w-full h-full mt-20 bg-white resize-none text-16 outline-0' />
     </div>
   )
 }
