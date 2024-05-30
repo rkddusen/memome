@@ -22,6 +22,7 @@ module.exports = {
         'light-blue': '#F0F4FB',
       },
       width: px0_1000,
+      minWidth: px0_100,
       height: px0_1000,
       padding: px0_100,
       margin: px0_100,

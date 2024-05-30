@@ -3,6 +3,7 @@ import { Memo } from '../models/Memo'
 import MemoManageBtn from './MemoManageBtn';
 import SVG from './SVG';
 import SelectMemoFolder from './SelectMemoFolder';
+import InputMemoTags from './InputMemoTags';
 
 interface MemoDetailComponentProps {
   handleBack(): void,
@@ -68,12 +69,11 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
           </SemiTitle>
           <SelectMemoFolder folder={folder} setFolder={setFolder} />
         </div>
-        <div className='flex flex-row items-center h-30'>
+        <div className='flex flex-row items-start'>
           <SemiTitle title='태그'>
             <line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line>
           </SemiTitle>
-          {/* 태그 컴포넌트 */}
-          <p>#태그입력</p>
+          <InputMemoTags tags={tags} setTags={setTags} />
         </div>
       </div>
       <input
@@ -97,11 +97,11 @@ interface SemiTitleComponentProps {
 }
 const SemiTitle:React.FC<SemiTitleComponentProps> = ({ title, children }) => {
   return (
-    <div className="flex flex-row items-center w-150">
-      <SVG svgStyle="stroke-2 w-14 h-14 fill-none stroke-gray">
+    <div className="flex flex-row items-center w-150 shrink-0">
+      <SVG svgStyle="stroke-2 w-16 h-16 fill-none stroke-gray">
         {children}
       </SVG>
-      <p className='ml-5 text-gray text-14'>{title}</p>
+      <p className='ml-5 text-gray text-16'>{title}</p>
     </div>
   );
 }
