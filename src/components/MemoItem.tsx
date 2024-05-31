@@ -4,10 +4,11 @@ import SVG from './SVG';
 
 interface MemoComponentProps {
   data: Memo,
+  handleMemoOpen(memo: Memo): void,
 }
-const MemoItem: React.FC<MemoComponentProps> = ({ data }) => {
+const MemoItem: React.FC<MemoComponentProps> = ({ data, handleMemoOpen }) => {
   return (
-    <div className='w-200 hover:cursor-pointer'>
+    <div className='w-200 hover:cursor-pointer' onClick={() => handleMemoOpen(data)}>
       <div className='relative w-full mb-5 border p-15 h-160 rounded-10 border-light-gray'>    
         <div className='w-full h-full overflow-y-hidden select-none'>
           <p className='mb-5 text-14'>{data.title}</p>

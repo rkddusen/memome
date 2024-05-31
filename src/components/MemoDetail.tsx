@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Memo } from '../models/Memo'
 import MemoManageBtn from './MemoManageBtn';
 import SVG from './SVG';
@@ -9,9 +9,10 @@ interface MemoDetailComponentProps {
   handleBack(): void,
   handleSaveMemo(memo: Memo): void,
   lastId: number,
+  data: Memo,
 }
 
-const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSaveMemo, lastId }) => {
+const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSaveMemo, lastId, data }) => {
   const [titleInput, setTitleInput] = useState<string>('');
   const [contentInput, setContentInput] = useState<string>('');
   const [star, setStar] = useState<boolean>(false);
@@ -19,6 +20,16 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
   const [tags, setTags] = useState<string[]>(['']);
 
   const TITLE = 0, CONTENT = 1;
+
+  useEffect(() => {
+    if(data.id > 0){
+      setTitleInput(data.title);
+      setContentInput(data.content);
+      setStar(data.star);
+      setFolder(data.folder);
+      setTags(Array.from(data.tags).concat(''));
+    }
+  },[]);
 
   const handleChangeMemo = (type: number, e:React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     if(type === TITLE){
@@ -29,7 +40,7 @@ const MemoDetail: React.FC<MemoDetailComponentProps> = ({ handleBack, handleSave
   }
   const saveMemo = (): void => {
     let newMemo = {
-      id: lastId + 1,
+      id: data.id > 0 ? data.id : lastId + 1,
       title: titleInput,
       content: contentInput,
       year: new Date().getFullYear(),
