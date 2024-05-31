@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import SVG from './SVG'
 
 interface InputMemoTagsComponentProps {
@@ -8,6 +8,8 @@ interface InputMemoTagsComponentProps {
 
 const InputMemoTags: React.FC<InputMemoTagsComponentProps> = ({ tags, setTags}) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  // 태그 입력 시 Enter키를 눌렀을 때, 바로 다음 태그를 입력할 수 있게 onFocus하기 위한 state
+  const [isEnter, setIsEnter] = useState<boolean>(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     let _tags = [...tags];
@@ -21,6 +23,7 @@ const InputMemoTags: React.FC<InputMemoTagsComponentProps> = ({ tags, setTags}) 
         return;
       }
       handleOpenNextInput();
+      setIsEnter(true);
     }
   }
   const handleOpenNextInput = () => {
@@ -29,9 +32,11 @@ const InputMemoTags: React.FC<InputMemoTagsComponentProps> = ({ tags, setTags}) 
   }
 
   useEffect(() => {
-    if(tags.length > 1)
+    if(isEnter){
       inputRef.current?.focus();
-  }, [tags.length]);
+      setIsEnter(false);
+    }
+  }, [isEnter]);
 
   const handleFocusInput = (index: number): void => {
     if(index === tags.length - 1)
